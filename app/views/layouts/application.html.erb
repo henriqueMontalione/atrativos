@@ -13,7 +13,19 @@
 
   </head>
 
+  <div class="header">
+    <%= render "shared/navbar" %>
+  </div>
+
   <body>
-    <%= yield %>
+    <div class="row">
+      <div class='container'>
+        <% flash.each do |message_type, message| %>
+        <%= javascript_tag "M.toast({html: '#{message}'})" %>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
+
 </html>

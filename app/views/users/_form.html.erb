@@ -1,0 +1,49 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> está probindo este registro de ser salvo:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-field">
+    <%= form.label :email, 'Email' %>
+    <%= form.text_field :email, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :password, 'Senha' %>
+    <%= form.password_field :password, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :password_confirmation, 'Confirmação de Senha' %>
+    <%= form.password_field :password_confirmation, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :cnpj, 'CNPJ' %>
+    <%= form.text_field :cnpj, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :social_name, 'Razão Social' %>
+    <%= form.text_field :social_name, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :fantasy_name, 'Nome fantasia' %>
+    <%= form.text_field :fantasy_name, class: 'validate' %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= form.submit 'Salvar', class: 'waves-effect waves-light btn blue' %>
+    <%= link_to "Voltar", :back, class: 'btn waves-effect waves-light grey' %>
+  </div>
+<% end %>
