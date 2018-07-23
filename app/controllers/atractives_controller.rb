@@ -1,4 +1,4 @@
-class AtractiveController < ApplicationController
+class AtractivesController < ApplicationController
   before_action :set_atractive, only: [:show, :edit, :update, :destroy]
   before_action :allow_without_password, only: [:update]
 
@@ -55,5 +55,4 @@ class AtractiveController < ApplicationController
         params[:atractive].delete(:password_confirmation)
     end
   end
-
 end

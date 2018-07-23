@@ -1,0 +1,44 @@
+<%= form_with(model: atractive, local: true) do |form| %>
+  <% if atractive.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(atractive.errors.count, "error") %> está probindo este registro de ser salvo:</h2>
+
+      <ul>
+      <% atractive.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-field">
+    <%= form.label :name, 'Nome' %>
+    <%= form.text_field :name, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :address, 'Endereço' %>
+    <%= form.text_field :address, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :duration_time, 'Tempo de Duração' %>
+    <%= form.text_field :duration_time, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :max_capacity, 'Capacidade Maxima' %>
+    <%= form.text_field :max_capacity, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.label :ticket_price, 'Preço do ingresso' %>
+    <%= form.text_field :ticket_price, class: 'validate' %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= form.submit 'Salvar', class: 'waves-effect waves-light btn blue' %>
+    <%= link_to "Voltar", :back, class: 'btn waves-effect waves-light grey' %>
+  </div>
+<% end %>

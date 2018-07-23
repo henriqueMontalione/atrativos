@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<h2>Atrativos</h2>
+
+<table class='highlight'>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Endereço</th>
+      <th>Tempo de Duração</th>
+      <th>Capacidade Maxima</th>
+      <th>Preço do Ingresso</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @atractives.each do |atractive| %>
+      <tr>
+        <td><%= atractive.name %></td>
+        <td><%= atractive.address %></td>
+        <td><%= atractive.duration_time %></td>
+        <td><%= atractive.max_capacity %></td>
+        <td><%= atractive.ticket_price %></td>
+        <td><a href='<%=atractive_path(atractive)%>'><i class="material-icons left">list</i></a></td>
+        <td><a href='<%=edit_atractive_path(atractive)%>'><i class="material-icons left">edit</i></a></td>
+        <td><a data-confirm="Você tem certeza que deseja apagar <%= atractive.name%>?" data-method="delete" href='<%= atractive_path(atractive)%>' rel="nofollow"><i class="material-icons left">delete</i></a>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Novo Atrativo', new_atractive_path, class: 'waves-effect waves-light btn' %>
