@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorize_user
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :allow_without_password, only: [:update]
 
@@ -40,6 +41,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def authorize_user
+    authorize User
+  end
 
   def set_user
     @user = User.find(params[:id])

@@ -1,6 +1,6 @@
 class AtractivesController < ApplicationController
   before_action :set_atractive, only: [:show, :edit, :update, :destroy]
-  before_action :allow_without_password, only: [:update]
+  before_action :authorize_atractive, only: [:show, :edit, :update, :destroy]
 
   def index
     @atractives = Atractive.all
@@ -41,18 +41,15 @@ class AtractivesController < ApplicationController
 
   private
 
+  def authorize_atractive
+    authorize @atractive
+  end
+
   def set_atractive
     @atractive = Atractive.find(params[:id])
   end
 
   def atractive_params
     params.require(:atractive).permit(:name, :address, :duration_time, :max_capacity, :ticket_price).merge(user_id: current_user.id)
-  end
-
-  def allow_without_password
-    if params[:atractive][:password].blank? && params[:atractive][:password_confirmation].blank?
-        params[:atractive].delete(:password)
-        params[:atractive].delete(:password_confirmation)
-    end
   end
 end

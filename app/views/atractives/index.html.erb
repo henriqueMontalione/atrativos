@@ -21,9 +21,14 @@
         <td><%= atractive.duration_time %></td>
         <td><%= atractive.max_capacity %></td>
         <td><%= atractive.ticket_price %></td>
-        <td><a href='<%=atractive_path(atractive)%>'><i class="material-icons left">list</i></a></td>
-        <td><a href='<%=edit_atractive_path(atractive)%>'><i class="material-icons left">edit</i></a></td>
-        <td><a data-confirm="Você tem certeza que deseja apagar <%= atractive.name%>?" data-method="delete" href='<%= atractive_path(atractive)%>' rel="nofollow"><i class="material-icons left">delete</i></a>
+        <% if user_signed_in? %>
+          <% if policy(User).show? %>
+            <td><a href='<%=atractive_path(atractive)%>'><i class="material-icons left">list</i></a></td>
+          <% end %>
+        <% end %>
+          <td><a href='<%=edit_atractive_path(atractive)%>'><i class="material-icons left">edit</i></a></td>
+          <td><a data-confirm="Você tem certeza que deseja apagar <%= atractive.name%>?" data-method="delete" href='<%= atractive_path(atractive)%>' rel="nofollow"><i class="material-icons left">delete</i></a>
+
       </tr>
     <% end %>
   </tbody>
