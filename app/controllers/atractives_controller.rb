@@ -46,7 +46,7 @@ class AtractivesController < ApplicationController
   end
 
   def atractive_params
-    params.require(:atractive).permit(:name, :address, :duration_time, :max_capacity, :ticket_price)
+    params.require(:atractive).permit(:name, :address, :duration_time, :max_capacity, :ticket_price).merge(user_id: current_user.id)
   end
 
   def allow_without_password
