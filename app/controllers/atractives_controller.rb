@@ -50,6 +50,6 @@ class AtractivesController < ApplicationController
   end
 
   def atractive_params
-    params.require(:atractive).permit(:name, :address, :duration_time, :max_capacity, :ticket_price).merge(user_id: current_user.id)
+    params.require(:atractive).permit(:name, :address, :duration_time, :max_capacity, :ticket_price, :image_file_name).merge(user_id: current_user.id)
   end
 end

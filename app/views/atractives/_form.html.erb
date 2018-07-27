@@ -1,4 +1,4 @@
-<%= form_with(model: atractive, local: true) do |form| %>
+<%= form_with(model: atractive, :html => { :multipart => true },local: true) do |form| %>
   <% if atractive.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(atractive.errors.count, "error") %> está probindo este registro de ser salvo:</h2>
@@ -34,6 +34,10 @@
   <div class="input-field">
     <%= form.label :ticket_price, 'Preço do ingresso' %>
     <%= form.text_field :ticket_price, class: 'validate' %>
+  </div>
+
+  <div class="input-field">
+    <%= form.file_field :image_file_name, class: 'validate' %>
   </div>
 
   <br>
