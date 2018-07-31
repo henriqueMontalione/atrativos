@@ -1,7 +1,28 @@
-<p>
-  <strong>Name:</strong>
-  <%= @atractive.name %>
-</p>
+<table class='highlight'>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Endereço</th>
+      <th>Tempo de Duração</th>
+      <th>Capacidade Maxima</th>
+      <th>Preço do Ingresso</th>
+      <th>Imagem</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @atractive.name %></td>
+        <td><%= @atractive.address %></td>
+        <td><%= @atractive.duration_time %></td>
+        <td><%= @atractive.max_capacity %></td>
+        <td><%= @atractive.ticket_price %></td>
+        <td><%= image_tag(@atractive.image_file_name.url(:thumb))%></td>
+
+      </tr>
+  </tbody>
+</table>
 
 <%= link_to 'Editar', edit_atractive_path(@atractive) %> |
 <%= link_to 'Voltar', atractives_path %>
